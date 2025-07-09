@@ -1,19 +1,24 @@
 import psycopg2
-from config import DB_CONFIG, SCHEMA, TABLE, ITEM_NAME, BASE_URL
 import requests
 from utils import print_ingredients_by_csr_grade, save_ingredients_by_csr_grade_image
+import os
+from dotenv import load_dotenv
+import json
+
+load_dotenv()
+config = json.load(open("config.json"))
 
 def get_toothpaste_by_name(item_name):
     try:
         connection = psycopg2.connect(
-            user=DB_CONFIG["USER"],
-            password=DB_CONFIG["PASSWORD"],
-            host=DB_CONFIG["HOST"],
-            port=DB_CONFIG["PORT"],
-            dbname=DB_CONFIG["DBNAME"]
+            user=os.getenv("user"),
+            password=os.getenv("password"),
+            host=os.getenv("host"),
+            port=os.getenv("port"),
+            dbname=os.getenv("dbname")
         )
         cursor = connection.cursor()
-        query = f"SELECT * FROM {SCHEMA}.{TABLE} WHERE item_name = %s;"
+        query = f"SELECT * FROM {config["SCHEMA"]}.{config["TABLE"]} WHERE item_name = %s;"
         cursor.execute(query, (item_name,))
         result = cursor.fetchall()
         cursor.close()
@@ -26,14 +31,14 @@ def get_toothpaste_by_name(item_name):
 def get_toothpaste_id_by_name(item_name):
     try:
         connection = psycopg2.connect(
-            user=DB_CONFIG["USER"],
-            password=DB_CONFIG["PASSWORD"],
-            host=DB_CONFIG["HOST"],
-            port=DB_CONFIG["PORT"],
-            dbname=DB_CONFIG["DBNAME"]
+            user=os.getenv("user"),
+            password=os.getenv("password"),
+            host=os.getenv("host"),
+            port=os.getenv("port"),
+            dbname=os.getenv("dbname")
         )
         cursor = connection.cursor()
-        query = f"SELECT id FROM {SCHEMA}.{TABLE} WHERE item_name = %s;"
+        query = f"SELECT id FROM {config["SCHEMA"]}.{config["TABLE"]} WHERE item_name = %s;"
         cursor.execute(query, (item_name,))
         result = cursor.fetchone()  # id는 하나만 반환될 것이므로 fetchone 사용
         cursor.close()
@@ -48,7 +53,7 @@ def get_toothpaste_id_by_name(item_name):
 
 def get_toothpaste_data_by_id(toothpaste_id):
     try:
-        url = f"{BASE_URL}/toothpastes/{toothpaste_id}"
+        url = f'{config["BASE_URL"]}/toothpastes/{toothpaste_id}'
         response = requests.get(url)
         response.raise_for_status()  # HTTP 오류 발생 시 예외 발생
         return response.json()  # JSON 데이터 반환
@@ -57,7 +62,7 @@ def get_toothpaste_data_by_id(toothpaste_id):
         return None
 
 
-toothpaste_id = get_toothpaste_id_by_name(ITEM_NAME)
+toothpaste_id = get_toothpaste_id_by_name(config["ITEM_NAME"])
 toothpaste_data = get_toothpaste_data_by_id(toothpaste_id)
 if toothpaste_data:
     print_ingredients_by_csr_grade(toothpaste_data)

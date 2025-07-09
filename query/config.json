@@ -1,0 +1,6 @@
+{
+    "SCHEMA": "toothpaste",
+    "TABLE": "toothpastes",
+    "ITEM_NAME": "아조나치약",
+    "BASE_URL": "https://apis.kklim.io/toothy"
+}

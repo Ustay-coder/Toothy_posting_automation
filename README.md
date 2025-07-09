@@ -1,0 +1,1 @@
+python 3.10.13 (pyenv 사용)

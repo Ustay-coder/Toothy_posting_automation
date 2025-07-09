@@ -9,3 +9,10 @@ webdriver-manager
 bs4
 transformers
 konlpy
+openai
+scikit-learn
+psutil
+torch
+numpy
+sentence-transformers
+kss

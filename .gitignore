@@ -83,7 +83,7 @@ profile_default/
 ipython_config.py
 
 # Virtual environmen
-posting_automation/
+venv310/
 
 # env
 .env

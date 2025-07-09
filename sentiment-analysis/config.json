@@ -1,0 +1,13 @@
+{
+    "file_path": "/Users/jeean/Toothy_posting_automation/crawl/reviews/content/아조나치약/blog_full.csv",
+    "distance_threshold": 0.5,
+    "lang": "ko",
+    "top_k": 10,
+    "device": "cpu",
+    "profile": true,
+    "purpose": "나는 이 리뷰를 통해 소비자들이 해당 치약을 사용했을 때 어떠한 경험을 했는지를 파악하고 싶다. 치약을 사용했을 때 이에 어떤 느낌을 받았는지, 어떤 것이 좋고 나빴는지를 알수 있으면 좋겠다. 구체적인 사용 후기들을 알고 싶다.",
+    "debug": true,
+    "sample_size": 500,
+    "save": true,
+    "benchmark": false
+}
