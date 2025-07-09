@@ -105,7 +105,7 @@ class ReviewAnalyzer:
             f"[Sentence]\n\"{phrase}\""
         )
 
-        resp = openai.ChatCompletion.create(
+        resp = openai.chat.completions.create(
             model=self.openai_model,
             messages=[
                 {"role": "system", "content": sys_msg},

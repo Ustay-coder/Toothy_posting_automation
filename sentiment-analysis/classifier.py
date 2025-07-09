@@ -108,7 +108,7 @@ class SentenceOpinionClustering:
             "한 문장 또는 아주 짧은 구로만."
         )
 
-        res = openai.ChatCompletion.create(
+        res = openai.chat.completions.create(
             model=self.openai_model,
             messages=[{"role": "user", "content": prompt}],
             temperature=self.openai_temperature,
