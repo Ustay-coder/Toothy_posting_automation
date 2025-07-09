@@ -16,3 +16,4 @@ torch
 numpy
 sentence-transformers
 kss
+psycopg2-binary

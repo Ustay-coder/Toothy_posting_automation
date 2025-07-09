@@ -26,6 +26,8 @@ class ReviewAnalyzer:
         lang: Literal["ko", "en"] = "ko",
         top_k: int = 5,
         openai_model: str = "gpt-4o-mini",
+        base_save_path: str = "",
+        save_name: str = "",
         device: str = "cpu",
         profile: bool = False,
         purpose: str = "나는 이 리뷰를 통해 소비자들이 해당 제품을 사용했을 때 어떠한 경험을 했는지를 파악하고 싶다."
@@ -45,6 +47,8 @@ class ReviewAnalyzer:
         )
         self.openai_model = openai_model
         openai.api_key = os.getenv("OPENAI_API_KEY")
+        self.base_save_path = base_save_path
+        self.save_name = save_name
 
     # ────────── 데이터 로드 & 문장 추출 ──────────
     def _load_sentences(self, *, min_tokens: int = 2) -> Tuple[pd.DataFrame, List[str]]:
@@ -163,7 +167,9 @@ class ReviewAnalyzer:
 
     def save_summary(self, pos: List[Tuple[int, str, int]], neg: List[Tuple[int, str, int]]) -> None:
         label_pos, label_neg = (("positive", "negative") if self.lang == "en" else ("긍정", "부정"))
-        with open(f"{self.csv_path.stem}_summary.txt", "w") as f:
+        if not os.path.exists(f"{self.base_save_path}/{self.save_name}"):
+            os.makedirs(f"{self.base_save_path}/{self.save_name}")
+        with open(f"{self.base_save_path}/{self.save_name}/{self.save_name}_summary.txt", "w") as f:
             f.write(f"🟢 {label_pos.upper()} TOP-{len(pos)}\n")
             for cid, phr, sz in pos:
                 f.write(f"[{cid}] ({sz}문장) {phr}\n")

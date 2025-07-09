@@ -34,6 +34,8 @@ if __name__ == "__main__":
             device=config["device"],
         profile=config["profile"],
         purpose=config["purpose"],
+        base_save_path=config["base_save_path"],
+        save_name=config["save_name"],
     )
     pos, neg = analyzer.analyze(
         purpose=config["purpose"],

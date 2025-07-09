@@ -9,5 +9,8 @@
     "debug": true,
     "sample_size": 500,
     "save": true,
-    "benchmark": false
+    "benchmark": false,
+    "openai_model": "gpt-4o-mini",
+    "base_save_path": "/Users/jeean/Toothy_posting_automation/sentiment-analysis/summary/",
+    "save_name": "아조나치약"
 }
