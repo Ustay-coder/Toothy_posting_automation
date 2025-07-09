@@ -45,3 +45,4 @@ if __name__ == "__main__":
     analyzer.print_summary(pos, neg)
     if config["save"]:
         analyzer.save_summary(pos, neg)
+        analyzer.save_summary_image(pos, neg)

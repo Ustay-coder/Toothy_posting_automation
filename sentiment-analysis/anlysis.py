@@ -8,6 +8,7 @@ import numpy as np
 import os
 from dotenv import load_dotenv
 from utils import clean_html, split_korean_sentences
+import matplotlib.pyplot as plt
 
 load_dotenv()
 # ────────────────────────────────────────────────────
@@ -176,6 +177,42 @@ class ReviewAnalyzer:
             f.write(f"\n🔴 {label_neg.upper()} TOP-{len(neg)}\n")
             for cid, phr, sz in neg:
                 f.write(f"[{cid}] ({sz}문장) {phr}\n")
+                
+    def save_summary_image(self, pos: List[Tuple[int, str, int]], neg: List[Tuple[int, str, int]], font_path: str = None) -> None:
+        """
+        긍정/부정 TOP-k 결과를 이미지로 예쁘게 저장합니다.
+        font_path: 한글 폰트 경로 (예: '/Library/Fonts/AppleGothic.ttf')
+        """
+        label_pos, label_neg = (("positive", "negative") if self.lang == "en" else ("긍정", "부정"))
+        plt.figure(figsize=(10, 6))
+        plt.axis('off')
+
+        # 폰트 설정 (한글 깨짐 방지)
+        if font_path:
+            from matplotlib import font_manager, rc
+            font_manager.fontManager.addfont(font_path)
+            rc('font', family=font_manager.FontProperties(fname=font_path).get_name())
+
+        # 텍스트 구성
+        lines = []
+        lines.append(f"🟢 {label_pos.upper()} TOP-{len(pos)}")
+        for cid, phr, sz in pos:
+            lines.append(f"[{cid}] ({sz}문장) {phr}")
+        lines.append("")
+        lines.append(f"🔴 {label_neg.upper()} TOP-{len(neg)}")
+        for cid, phr, sz in neg:
+            lines.append(f"[{cid}] ({sz}문장) {phr}")
+
+        text = "\n".join(lines)
+
+        # 이미지에 텍스트 출력
+        plt.text(0.01, 0.99, text, va='top', ha='left', fontsize=16, wrap=True)
+        save_dir = f"{self.base_save_path}/{self.save_name}/"
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+        img_path = f"{save_dir}/{self.save_name}_summary.png"
+        plt.savefig(img_path, bbox_inches='tight', pad_inches=0.5, dpi=200)
+        plt.close()
 
 
         
