@@ -1,0 +1,11 @@
+# psycopg2
+dotenv
+requests
+Pillow
+pandas
+transformers
+selenium
+webdriver-manager
+bs4
+transformers
+konlpy
