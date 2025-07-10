@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import json
 
 load_dotenv()
+
 config = json.load(open("config.json"))
 
 def get_toothpaste_by_name(item_name):
@@ -18,8 +19,8 @@ def get_toothpaste_by_name(item_name):
             dbname=os.getenv("dbname")
         )
         cursor = connection.cursor()
-        query = f"SELECT * FROM {config["SCHEMA"]}.{config["TABLE"]} WHERE item_name = %s;"
-        cursor.execute(query, (item_name,))
+        query = f"SELECT * FROM {config['SCHEMA']}.{config['TABLE']} WHERE item_name LIKE %s;"
+        cursor.execute(query, (f"%{item_name}%",))
         result = cursor.fetchall()
         cursor.close()
         connection.close()
@@ -38,8 +39,8 @@ def get_toothpaste_id_by_name(item_name):
             dbname=os.getenv("dbname")
         )
         cursor = connection.cursor()
-        query = f"SELECT id FROM {config["SCHEMA"]}.{config["TABLE"]} WHERE item_name = %s;"
-        cursor.execute(query, (item_name,))
+        query = f"SELECT id FROM {config['SCHEMA']}.{config['TABLE']} WHERE item_name LIKE %s;"
+        cursor.execute(query, (f"%{item_name}%",))
         result = cursor.fetchone()  # id는 하나만 반환될 것이므로 fetchone 사용
         cursor.close()
         connection.close()
