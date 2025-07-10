@@ -3,11 +3,11 @@ from pathlib import Path
 from typing import List, Tuple, Dict, Literal
 import pandas as pd
 import openai
-from classifier import SentenceOpinionClustering
+from .classifier import SentenceOpinionClustering
 import numpy as np
 import os
 from dotenv import load_dotenv
-from utils import clean_html, split_korean_sentences
+from .utils import clean_html, split_korean_sentences
 import matplotlib.pyplot as plt
 
 load_dotenv()

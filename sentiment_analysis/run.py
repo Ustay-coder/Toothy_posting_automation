@@ -1,6 +1,6 @@
 import json
 from anlysis import ReviewAnalyzer
-from classifier import SentenceOpinionClustering
+from .classifier import SentenceOpinionClustering
 
 def bench(device: str):
     # 테스트용 작은 샘플 (원한다면 ReviewAnalyzer._load_sentences 로딩)

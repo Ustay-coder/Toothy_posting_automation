@@ -8,7 +8,7 @@ import openai
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import AgglomerativeClustering
 import numpy as np
-from utils import clean_html, split_korean_sentences
+from .utils import clean_html, split_korean_sentences
 
 
 # ────────────────────────────────────────────────────
