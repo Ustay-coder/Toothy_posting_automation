@@ -11,6 +11,6 @@
     "save": true,
     "benchmark": false,
     "openai_model": "gpt-4o-mini",
-    "base_save_path": "/Users/gimjian/Programming/Toothy_posting_automation/sentiment-analysis/summary/",
+    "base_save_path": "/Users/gimjian/Programming/Toothy_posting_automation/sentiment_analysis/summary/",
     "save_name": "암웨이치약"
 }

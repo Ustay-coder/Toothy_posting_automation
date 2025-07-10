@@ -1,7 +1,7 @@
 {
   "crawl": {
     "keyword": "암웨이치약",
-    "display": 100,
+    "display": 1,
     "end": 5,
     "saveUrlBasePath": "reviews/url",
     "saveContentBasePath": "reviews/content"
@@ -19,7 +19,7 @@
     "save": true,
     "benchmark": false,
     "openai_model": "gpt-4o-mini",
-    "base_save_path": "sentiment-analysis/summary/",
+    "base_save_path": "sentiment_analysis/summary/",
     "save_name": "암웨이치약"
   }
 } 

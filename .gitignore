@@ -89,7 +89,7 @@ venv310/
 .env
 
 # sentiment-analysis
-sentiment-analysis/summary/
+sentiment_analysis/summary/
 
 # query
 crawl/reviews/content/
