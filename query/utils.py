@@ -1,4 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
+import os
+import json
 
 def print_ingredients_by_csr_grade(toothpaste_data):
     # 등급별로 분류할 딕셔너리 초기화
@@ -48,7 +50,17 @@ def wrap_text_by_pixel(draw, text, font, max_width):
         lines.append(current_line)
     return lines
 
-def save_ingredients_by_csr_grade_image(toothpaste_data, filename='ingredients_by_grade.png'):
+def save_ingredients_by_csr_grade_image(toothpaste_data, config_path='query/config.json'):
+    # config에서 ITEM_NAME 읽기
+    with open(config_path, 'r', encoding='utf-8') as f:
+        config = json.load(f)
+    item_name = config.get('ITEM_NAME', 'default')
+
+    # 디렉토리 생성
+    save_dir = f'ingredients/{item_name}'
+    os.makedirs(save_dir, exist_ok=True)
+    filename = os.path.join(save_dir, 'ingredients_by_grade.png')
+
     grade_dict = {
         'A+': [], 'A': [], 'B+': [], 'B': [], 'C+': [], 'C': [], 'D': [], 'E': [], 'F': []
     }

@@ -1,6 +1,6 @@
 {
     "file_path": "/Users/gimjian/Programming/Toothy_posting_automation/crawl/reviews/content/암웨이치약/blog_full.csv",
-    "distance_threshold": 0.4,
+    "distance_threshold": 0.3,
     "lang": "ko",
     "top_k": 10,
     "device": "cpu",

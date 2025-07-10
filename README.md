@@ -39,6 +39,51 @@ pip install -r requirements.txt
 ### 5. 실행 방법
 프로젝트의 실행 방법(예: main.py 실행 등)을 명시합니다.
 
+#### 5-1. 블로그 url 크롤링
 ```bash
-python main.py
+cd crawl
+python get_blog_urls.py
+```
+#### 5-2. 블로그 url로 컨텐츠 크롤링
+```bash
+python get_blog_contents.py
+```
+
+#### 5-3. 성분 분석 정보 가져오기
+
+```json
+{
+    "SCHEMA": "[YOUR SUPABASE SCHEMA]",
+    "TABLE": "YOUR SUPABASE TABLE",
+    "ITEM_NAME": "YOUR ITEM NAME",
+    "BASE_URL": "YOUR SERVER BASE URL"
+}
+```
+```bash
+python get_toothpaste.py
+```
+
+#### 5-4. 감정분석 
+
+```json 
+{
+    "file_path": [YOUR DATA FILE PATH],
+    "distance_threshold": 0.5,
+    "lang": "ko",
+    "top_k": 10,
+    "device": "cpu",
+    "profile": true,
+    "purpose": [YOUR PURPOSE],
+    "debug": true,
+    "sample_size": 500,
+    "save": true,
+    "benchmark": false,
+    "openai_model": "gpt-4o-mini",
+    "base_save_path": [YOURSAVE BASE PATH]
+    "save_name": [YOUR SAVE DIRECTORY NAME]
+}
+```
+
+```bash
+python run.py
 ```
