@@ -5,10 +5,13 @@ import time
 import os
 import pandas as pd
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # 네이버 API 정보 입력
-client_id = 'gViXcpkbNs6rFh4AinDb'
-client_secret = 'tXrChF5Wcx'
+client_id = os.getenv('naver_search_client_id')
+client_secret = os.getenv('naver_search_client_secret')
 
 # 이 파일은 네이버 블로그 검색 API를 활용하여, 키워드로 검색한 블로그의 url과 요약(description)을 CSV 파일로 저장하는 코드입니다.
 # 네이버 블로그 url을 복사해오는 용도로 사용할 수 있습니다.
