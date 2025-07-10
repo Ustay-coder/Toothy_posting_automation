@@ -1,6 +1,6 @@
 {
-    "file_path": "/Users/jeean/Toothy_posting_automation/crawl/reviews/content/아조나치약/blog_full.csv",
-    "distance_threshold": 0.5,
+    "file_path": "/Users/gimjian/Programming/Toothy_posting_automation/crawl/reviews/content/암웨이치약/blog_full.csv",
+    "distance_threshold": 0.4,
     "lang": "ko",
     "top_k": 10,
     "device": "cpu",
@@ -11,6 +11,6 @@
     "save": true,
     "benchmark": false,
     "openai_model": "gpt-4o-mini",
-    "base_save_path": "/Users/jeean/Toothy_posting_automation/sentiment-analysis/summary/",
-    "save_name": "아조나치약"
+    "base_save_path": "/Users/gimjian/Programming/Toothy_posting_automation/sentiment-analysis/summary/",
+    "save_name": "암웨이치약"
 }
