@@ -52,7 +52,7 @@ def wrap_text_by_pixel(draw, text, font, max_width):
 
 def save_ingredients_by_csr_grade_image(toothpaste_data, config_path='query/config.json'):
     # config에서 ITEM_NAME 읽기
-    with open(config_path, 'r', encoding='utf-8') as f:
+    with open('config.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
     item_name = config.get('ITEM_NAME', 'default')
 
